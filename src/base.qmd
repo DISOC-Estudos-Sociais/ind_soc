@@ -1,0 +1,14 @@
+---
+title: "base"
+format: html
+---
+
+```{r}
+library(PNADcIBGE)
+```
+
+```{r}
+?get_pnadc
+```
+
+

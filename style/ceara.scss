@@ -1,0 +1,19 @@
+/*-- scss:defaults --*/
+
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Kanit');
+@import url('https://fonts.googleapis.com/css2?family=Maitree');
+
+$headings-font-family: "Kanit";
+$font-family-sans-serif: "Maitree";
+
+/*-- scss:rules --*/
+.navbar {
+  font-family: $headings-font-family;
+}
+.dropdown-menu {
+  font-family: $font-family-sans-serif;
+}
+.value-box {
+  text-align: center;
+}

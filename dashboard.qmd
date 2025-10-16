@@ -1,0 +1,85 @@
+---
+title: "Indicadores Sociais"
+author: DISOC-IPECE
+format:
+  dashboard:
+    orientation: columns
+    nav-buttons: [github]
+    github: https://github.com/posit-conf-2024/olympicdash
+    scrolling: true
+    theme: 
+      - minty
+      - style/ceara.scss
+    embed-resources: false
+logo: output/IPECE.png
+---
+
+#  {.sidebar}
+
+Este dashboard mostra dados da [PNAD Contínua](https://www.ibge.gov.br/estatisticas/sociais/saude/17270-pnad-continua.html) do [IBGE](https://www.ibge.gov.br/pt/inicio.html) para o estado do Ceará. 
+
+Desenvolvido pela Diretoria de Estudos Sociais do [IPECE](https://www.ipece.ce.gov.br/)
+
+<br>
+
+::: {.callout-note collapse="true"}
+## Notas
+
+As variáveis relacionadas a rendimento estão defalcionadas de acordo com...
+
+:::
+
+# Demografia
+
+## Column - População {width=50%}
+### Row População total
+
+![Crescimento populacional absoluto da população residente no Ceará (Mil pessoas)](output/cresc_pop.png)
+
+### Urbanização
+
+![Taxa de Urbanização (em %)](output/urbanizacao.png)
+
+### Sexo
+![Razão Sexo](output/razao_sexo.png)
+
+### Faixa etária
+![Pirâmides Etárias](output/piramide_etaria.png)
+
+## Column {width=50%}
+
+### Esperança de vida
+![Esperança de vida ao nascer](output/esp_ao_nascer.png)
+
+### Mortalidade infantil
+![Taxa de mortalidade infantil](output/mort_infantil.png)
+
+### Razão de dependência
+![Razão de dependência](output/razao_dependencia.png)
+
+### Raça
+![Distribuição da população por Cor ou Raça, em %](output/raca.png)
+
+# Domicílios
+
+## Média de moradores
+
+## Tipo de domicílio
+
+## Condição de ocupação
+
+## Material
+
+## Rede de esgotamento
+
+## Rede de água
+
+## Coleta de lixo
+
+## Rede de energia elétrica
+
+## Posse de bens
+
+# Educação
+
+# Mercado de trabalho
