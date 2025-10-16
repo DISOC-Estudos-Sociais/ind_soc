@@ -1,5 +1,5 @@
 ---
-title: "Indicadores Sociais"
+title: "Indicadores Sociais do Ceará"
 author: DISOC-IPECE
 format:
   dashboard:
@@ -13,6 +13,17 @@ format:
     embed-resources: false
 logo: output/IPECE.png
 ---
+
+```{r}
+library(palmerpenguins)
+library(ggplot2)
+library(plotly)
+library(dplyr)
+library(lubridate)
+library(tidyr)
+library(forcats)
+```
+
 
 #  {.sidebar}
 
@@ -34,31 +45,84 @@ As variáveis relacionadas a rendimento estão defalcionadas de acordo com...
 ## Column - População {width=50%}
 ### Row População total
 
-![Crescimento populacional absoluto da população residente no Ceará (Mil pessoas)](output/cresc_pop.png)
+```{r}
+#| include: false
+count_by_year = function(data, ...) {
+  data |> 
+    group_by(year, ...) |> 
+    summarize(population = n(), .groups = 'drop')
+}
+```
+
+```{r}
+count_by_year(penguins) |> 
+  plot_ly(x=~year,
+          y=~population,
+          type='bar')
+```
+
 
 ### Urbanização
 
-![Taxa de Urbanização (em %)](output/urbanizacao.png)
+```{r}
+plot_ly(count_by_year(penguins, island), x = ~year, y = ~population, color = ~island, 
+        type = 'scatter', mode = 'lines+markers')
+```
+
 
 ### Sexo
-![Razão Sexo](output/razao_sexo.png)
+```{r}
+plot_ly(count_by_year(penguins, island), x = ~year, y = ~population, color = ~island, 
+        type = 'scatter', mode = 'lines+markers')
+```
 
 ### Faixa etária
-![Pirâmides Etárias](output/piramide_etaria.png)
+
+```{r}
+penguins |> 
+  group_by(sex, flipper_length_mm, year) |> 
+  summarize(population = n(), .groups = 'drop') |> 
+  mutate(
+    population = case_when(
+      sex == "male" ~ -population,
+      TRUE ~ population
+    ),
+    flipper_length_mm = as_factor(flipper_length_mm)
+  ) |> 
+  ggplot(aes(population, flipper_length_mm, fill = sex)) +
+  geom_col() +
+  facet_wrap(~year)
+
+```
+
+
 
 ## Column {width=50%}
 
 ### Esperança de vida
-![Esperança de vida ao nascer](output/esp_ao_nascer.png)
+```{r}
+plot_ly(count_by_year(penguins, island), x = ~year, y = ~population, color = ~island, 
+        type = 'scatter', mode = 'lines+markers')
+```
 
 ### Mortalidade infantil
-![Taxa de mortalidade infantil](output/mort_infantil.png)
+```{r}
+plot_ly(count_by_year(penguins, island), x = ~year, y = ~population, color = ~island, 
+        type = 'scatter', mode = 'lines+markers')
+```
 
 ### Razão de dependência
-![Razão de dependência](output/razao_dependencia.png)
+```{r}
+plot_ly(count_by_year(penguins, island), x = ~year, y = ~population, color = ~island, 
+        type = 'scatter', mode = 'lines+markers')
+```
 
 ### Raça
-![Distribuição da população por Cor ou Raça, em %](output/raca.png)
+
+```{r}
+plot_ly(count_by_year(penguins, island), x = ~year, y = ~population, color = ~island, 
+        type = 'bar')
+```
 
 # Domicílios
 
