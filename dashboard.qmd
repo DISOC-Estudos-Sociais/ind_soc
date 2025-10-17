@@ -47,6 +47,9 @@ As variáveis relacionadas a rendimento estão defalcionadas de acordo com...
 
 ```{r}
 #| include: false
+
+# Essa função evita a repetição da contagem populacional toda vez que elaborar um novo gráfico.
+
 count_by_year = function(data, ...) {
   data |> 
     group_by(year, ...) |> 
